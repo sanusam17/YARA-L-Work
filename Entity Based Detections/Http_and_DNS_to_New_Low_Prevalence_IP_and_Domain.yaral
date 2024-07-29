@@ -49,7 +49,7 @@ rule Http_and_DNS_to_New_Low_Prevalence_IP_and_Domain {
     $f.graph.entity.artifact.ip = $dns.network.dns.questions.name
     $f.graph.metadata.entity_type   = "DOMAIN_NAME"
     $f.graph.entity.domain.first_seen_time.seconds >= 0
-    2592000 > timestamp.current_seconds() - $i.graph.entity.domain.first_seen_time.seconds
+    2592000 > timestamp.current_seconds() - $f.graph.entity.domain.first_seen_time.seconds
 
   match:
     $hst over 5m
